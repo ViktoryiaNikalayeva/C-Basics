@@ -9,10 +9,9 @@ namespace C_Basics
             for (int i = 0; i < ArrayWay().Length; i++)
                 Console.WriteLine(ArrayWay()[i]);
 
-            foreach (string element in NoArrayWay())
-                Console.WriteLine(element);
+            Console.WriteLine(NoArrayWay());
 
-            string filePath = "C:\\Users\\v2.nikolaeva\\Visual Studio Projects\\C_Basics\\File.txt";
+            string filePath = @$"{Environment.CurrentDirectory}/Resources/File.txt"; ;
             int numberOfCases = FileUtils.InsertNumberOfCases();
             FileTask.SelectCases(filePath, numberOfCases);
             Console.ReadLine();
@@ -47,29 +46,12 @@ namespace C_Basics
         }
 
 
-        public static IList NoArrayWay()
+        public static Boolean NoArrayWay()
         {
-            ArrayList list1 = new ArrayList() { "Alex", "Dima", "Kate", "Galina", "Ivan" };
-            ArrayList list2 = new ArrayList() { "Dima", "Ivan", "Kate" };
-
-            Boolean isEqualNameExist;
-            ArrayList resultList = new ArrayList();
-            foreach (string element in list1)
-            {
-                isEqualNameExist = false;
-                foreach (string element2 in list2)
-                {
-                    if (element.Equals(element2))
-                    {
-                        isEqualNameExist = true;
-                    }
-                }
-                if (isEqualNameExist == false)
-                {
-                    resultList.Add(element);
-                }
-            }
-            return resultList;
+            var list1 = new List<string>() { "Alex", "Dima", "Kate", "Galina", "Ivan" };
+            var list2 = new List<string>() { "Dima", "Ivan", "Kate" };
+            bool AreListsEqual = list1.Equals(list2);
+            return AreListsEqual;
         }
     }
 }
